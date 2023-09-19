@@ -1,7 +1,9 @@
 import passportCall from '../../utils/passport.utils.js';
 
 class SessionsMongoDAO {
-	constructor() {}
+	constructor() {
+		console.log('sessions DAO connected.')
+	}
 
 	async getLoginDao(req, res) {
 		try {

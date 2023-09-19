@@ -45,7 +45,6 @@ class ViewsMongoDAO {
 		try {
 			const payload = {
 				header: false,
-				style: 'register.css',
 				documentTitle: 'Register',
 			}
 			return payload;

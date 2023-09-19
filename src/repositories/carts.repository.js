@@ -72,6 +72,14 @@ class CartsRepository {
 			return `${error}`;
 		}
 	}
+	async purchaseCart(req, res){
+		try {
+			return await this.dao.purcharseCartDao(req,res);
+
+		}catch (error){
+			return `${error}`;
+		}
+	}
 }
 
 export default CartsRepository;

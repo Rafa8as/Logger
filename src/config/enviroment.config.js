@@ -10,4 +10,6 @@ export default {
   GITHUB_CLIENT_SECRET: process.env.GITHUB_CLIENT_SECRET,
   GITHUB_CALLBACK_URL: process.env.GITHUB_CALLBACK_URL,
   COOKIE_SECRET: process.env.COOKIE_SECRET,
+  EMAIL: process.env.EMAIL,
+  EMAIL_PASSWORD: process.env.EMAIL_PASSWORD,
 };

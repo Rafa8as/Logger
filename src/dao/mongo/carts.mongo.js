@@ -7,7 +7,9 @@ import sendEmail from '../../utils/email.utils.js';
 import logger from '../../utils/logger.util.js';
 
 class CartsMongoDAO {
-	constructor() {}
+	constructor() {
+		console.log('carts DAO connected.')
+	}
 
 	async getCartsDao() {
 		try {

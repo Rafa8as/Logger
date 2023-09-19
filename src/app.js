@@ -16,14 +16,9 @@ import setupSocket from "./utils/socket.utils.js";
 import logger from "./utils/logger.util.js";
 
 
-
-
-
-
 const app = express();
 const PORT = 8080;
 const host = "0.0.0.0";
-
 
 mongoose.set('strictQuery', false)
 
@@ -46,7 +41,6 @@ app.use(
 ));
 
 
-
 app.use(compression({
     brotli:{
         enable:true,
@@ -65,92 +59,10 @@ app.use(cookieParser(cookieSecret));
 app.use(morgan('dev'));
 app.use(cors());
 
-/*
-app.use('/api/products', productsRouter);
-//app.use ('/api/carts', cartsRouter);
-app.use('/api/cookies', cookiesRouter);
-app.use('/api/sessions', sessionsRouter);
-app.use('/api/messages', messagesRouter);
-app.use('/', viewsRouter);
-
-
-
-
-import productsRouter from "./routes/products.router.js";
-//import cartsRouter from "./routes/carts.router.js";
-import viewsRouter from "./routes/views.router.js";
-import messagesRouter from "./routes/messages.router.js"
-import cookiesRouter from "./routes/cookies.router.js"
-import sessionsRouter from "./routes/sessions.router.js"
-import products from "./data/products.json" assert {type: "json"};
-
-
-
-
-import { messageModel } from "./dao/mongo/messages.model.js";
-import { productModel } from "./dao/mongo/product.model.js";
-
-import { Server } from "socket.io";
-import "dotenv/config";
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
 import { Server } from "socket.io";
 import "dotenv/config";
 const httpServer = app.listen(PORT, host, () => { logger.info(`Server arriba en http://${host}: ${PORT}`); });
 setupSocket (httpServer)
 const io = new Server(httpServer);
-/*
-io.on("connection", async socket => {
-    console.log(`Cliente ${socket.id} conectado`);
 
-
-    const products = await productModel.find().lean();
-    io.emit("products", products);
-
-    productModel.watch().on("change", async change => {
-        const products = await productModel.find().lean();
-        io.emit("products", products);
-    });
-
-
-    const messages = [];
-
-    socket.on("user", async data => {
-        await messageModel.create({
-            user: data.user,
-            message: data.messages,
-        });
-        const messagesLogs = await messageModel.find();
-        io.emit("messagesLogs", messagesLogs);
-    });
-
-
-    socket.on("message", async data => {
-        await messageModel.create({
-            user: data.user,
-            message: data.message,
-        });
-
-        const messagesLogs = await messageModel.find();
-
-        io.emit("messagesLogs", messagesLogs);
-
-    });
-    socket.on("disconnect", () => {
-        console.log(`Client ${socket.id} disconnected`);
-    });
-});
-*/
 router (app);

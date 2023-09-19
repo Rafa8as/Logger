@@ -8,6 +8,18 @@ class ProductDTO {
         this.stock= product.stock;        
         this.category= product.category.toLowerCase();
     };
+
+    isValidProduct(product) {
+        return (
+            product &&
+            typeof product.title === 'string' &&
+            typeof product.description === 'string' &&
+            typeof product.category === 'string' &&
+            typeof product.price === 'number' &&
+            typeof product.stock === 'number' &&
+            typeof product.thumbnail === 'string'
+        );
+    }
 };
 
 export default ProductDTO

@@ -1,6 +1,8 @@
 import { productModel } from "./models/product.model.js";
 import ProductDTO from '../../dto/product.dto.js';
 import {faker} from '@faker-js/faker/locale/es';
+import customError from "../../errors/errorsCustom.js";
+import numErrors from "../../errors/numErrors.js";
 
 class ProductsMongoDAO {
 	constructor() {
@@ -74,7 +76,7 @@ async generateProductsDao() {
 			const product = {
 				title: faker.commerce.productName(),
 				description: faker.commerce.productDescription(),
-				code: faker.string.uuid(),
+				code: faker.string.uuid({min: 0, max: 655356} ),
 				price: faker.commerce.price(),
 				stock: faker.number.int({min:0, max: 100}),
 				category: faker.commerce.product(),
@@ -86,7 +88,13 @@ async generateProductsDao() {
 		if (!products) return `No products were created`;
 		return products;
 	}catch (error){
-		return `${error}`
+		customError.createError({
+			name:"Mocking-products error",
+			cause: "cannot create proudcts",
+			message: "try again",
+			code: numErrors.MOCKING_ERROR//4
+		})
+		
 	}
 }
 }

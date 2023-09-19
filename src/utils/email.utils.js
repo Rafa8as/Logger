@@ -5,8 +5,9 @@ const EMAIL = config.EMAIL;
 const EMAIL_PASSWORD = config.EMAIL_PASSWORD;
 
 const transporter = createTransport({
-	host: 'smtp.ethereal.email',
+	host: 'smtp.gmail.com',
 	port: 587,
+	secure: false,
 	auth: {
 		user: EMAIL,
 		pass: EMAIL_PASSWORD,

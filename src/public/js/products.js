@@ -1,4 +1,5 @@
 import logger from "../../utils/logger.util.js";
+
 const productsForm = document.querySelectorAll('.product-form');
 
 productsForm.forEach((productForm) => {
